@@ -5,12 +5,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "knifetype")
-public class KnifeType
+public class KnifeType extends Auditable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long knifetypeid;
+    private long knifeTypeid;
 
     // eg Kitchen Knife, Survival Knife, Axe/Machete, Pocket Knife
-    private String knifetype;
+    // One to many relation to Steels
+    private String knifeType;
 }

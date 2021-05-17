@@ -29,6 +29,12 @@ public class Steels extends Auditable{
     // 1 - 10 Scale
     private String stainless;
 
+    @OneToMany(mappedBy = "steel",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true)
+    private Set<SteelIndustrialApplications>
+
+
 
     public Steels() {
     }
@@ -112,5 +118,19 @@ public class Steels extends Auditable{
 
     public void setStainless(String stainless) {
         this.stainless = stainless;
+    }
+
+    @Override
+    public String toString() {
+        return "Steels{" +
+                "steelid=" + steelid +
+                ", steelname='" + steelname + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", steeldescription='" + steeldescription + '\'' +
+                ", rockwellhardness='" + rockwellhardness + '\'' +
+                ", sharpening='" + sharpening + '\'' +
+                ", edgeretention='" + edgeretention + '\'' +
+                ", stainless='" + stainless + '\'' +
+                '}';
     }
 }

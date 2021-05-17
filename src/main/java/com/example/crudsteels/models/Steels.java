@@ -1,13 +1,24 @@
 package com.example.crudsteels.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "steel")
 public class Steels extends Auditable{
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long steelid;
+
+    @OneToMany(mappedBy = "steel",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @JsonIgnoreProperties(value = "steels", allowSetters = true)
+    private Set<SteelIndustrial> applications = new HashSet<>();
 
     // eg 420HC, s30v, m390
     private String steelname;
@@ -29,10 +40,7 @@ public class Steels extends Auditable{
     // 1 - 10 Scale
     private String stainless;
 
-    @OneToMany(mappedBy = "steel",
-        cascade = CascadeType.ALL,
-        orphanRemoval = true)
-    private Set<SteelIndustrialApplications>
+
 
 
 

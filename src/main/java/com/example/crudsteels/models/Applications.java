@@ -14,11 +14,11 @@ public class Applications extends Auditable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long applicationid;
 
-    @OneToMany(mappedBy = "applications",
+    @OneToMany(mappedBy = "application",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
-    @JsonIgnoreProperties(value = "applications", allowSetters = true)
-    private Set<SteelIndustrial> steels = new HashSet<>();
+    @JsonIgnoreProperties(value = "application", allowSetters = true)
+    private Set<SteelIndustrial> steel = new HashSet<>();
 
 
 

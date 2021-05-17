@@ -6,27 +6,27 @@ import java.io.Serializable;
 @Embeddable
 public class SteelIndustrialId implements Serializable {
 
-    private long steels;
+    private long steel;
 
-    private long applications;
+    private long application;
 
     public SteelIndustrialId() {
     }
 
-    public long getSteels() {
-        return steels;
+    public long getSteel() {
+        return steel;
     }
 
-    public void setSteels(long steels) {
-        this.steels = steels;
+    public void setSteel(long steel) {
+        this.steel = steel;
     }
 
-    public long getApplications() {
-        return applications;
+    public long getApplication() {
+        return application;
     }
 
-    public void setApplications(long applications) {
-        this.applications = applications;
+    public void setApplication(long application) {
+        this.application = application;
     }
 
     @Override
@@ -41,8 +41,8 @@ public class SteelIndustrialId implements Serializable {
             return false;
         }
         SteelIndustrialId that = (SteelIndustrialId) o;
-        return steels == that.steels &&
-                applications == that.applications;
+        return steel == that.steel &&
+                application == that.application;
     }
 
     @Override

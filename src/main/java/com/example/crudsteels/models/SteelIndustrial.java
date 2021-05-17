@@ -1,6 +1,8 @@
 package com.example.crudsteels.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -13,36 +15,38 @@ public class SteelIndustrial
     @Id
     @ManyToOne
     @JoinColumn(name = "steelid")
-    private Steels steels;
+    @JsonIgnoreProperties(value = "application", allowSetters = true)
+    private Steels steel;
 
     @Id
     @ManyToOne
     @JoinColumn(name = "applicationid")
-    private Applications applications;
+    @JsonIgnoreProperties(value = "steel", allowSetters = true)
+    private Applications application;
 
     public SteelIndustrial() {
     }
 
-    public SteelIndustrial(Steels steels, Applications applications) {
-        this.steels = steels;
-        this.applications = applications;
+    public SteelIndustrial(Steels steel, Applications applications) {
+        this.steel = steel;
+        this.application = applications;
     }
 
 
-    public Steels getSteels() {
-        return steels;
+    public Steels getSteel() {
+        return steel;
     }
 
-    public void setSteels(Steels steels) {
-        this.steels = steels;
+    public void setSteel(Steels steel) {
+        this.steel = steel;
     }
 
-    public Applications getApplications() {
-        return applications;
+    public Applications getApplication() {
+        return application;
     }
 
-    public void setApplications(Applications applications) {
-        this.applications = applications;
+    public void setApplication(Applications applications) {
+        this.application = applications;
     }
 
 
@@ -60,8 +64,8 @@ public class SteelIndustrial
             return false;
         }
         SteelIndustrial that = (SteelIndustrial) o;
-        return ((steels == null) ? 0 : steels.getSteelid()) == ((that.steels == null) ? 0 : that.steels.getSteelid()) &&
-                ((applications == null) ? 0 : applications.getApplicationid()) == ((that.applications == null) ? 0 : that.applications.getApplicationid());
+        return ((steel == null) ? 0 : steel.getSteelid()) == ((that.steel == null) ? 0 : that.steel.getSteelid()) &&
+                ((application == null) ? 0 : application.getApplicationid()) == ((that.application == null) ? 0 : that.application.getApplicationid());
     }
 
     @Override

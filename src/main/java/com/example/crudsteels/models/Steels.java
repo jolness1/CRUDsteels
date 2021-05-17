@@ -17,8 +17,8 @@ public class Steels extends Auditable{
     @OneToMany(mappedBy = "steel",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
-    @JsonIgnoreProperties(value = "steels", allowSetters = true)
-    private Set<SteelIndustrial> applications = new HashSet<>();
+    @JsonIgnoreProperties(value = "steel", allowSetters = true)
+    private Set<SteelIndustrial> application = new HashSet<>();
 
     // eg 420HC, s30v, m390
     private String steelname;

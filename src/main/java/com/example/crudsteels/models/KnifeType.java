@@ -13,7 +13,7 @@ public class KnifeType extends Auditable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long knifeTypeid;
+    private long knifetypeid;
 
     // eg Kitchen Knife, Survival Knife, Axe/Machete, Pocket Knife
     // One to many relation to Steels

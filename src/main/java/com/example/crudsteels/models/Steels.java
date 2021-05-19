@@ -20,6 +20,11 @@ public class Steels extends Auditable{
     @JsonIgnoreProperties(value = "steel", allowSetters = true)
     private Set<SteelIndustrial> application = new HashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name = "knifetype")
+    @JsonIgnoreProperties("steel")
+    private KnifeType knifetype;
+
     // eg 420HC, s30v, m390
     private String steelname;
 

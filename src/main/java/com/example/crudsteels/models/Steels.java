@@ -23,7 +23,7 @@ public class Steels extends Auditable{
     @ManyToOne
     @JoinColumn(name = "knifetype")
     @JsonIgnoreProperties("steel")
-    private KnifeType knifetype;
+    private KnifeType knifeType;
 
     // eg 420HC, s30v, m390
     private String steelname;

@@ -5,9 +5,12 @@ DELETE
 FROM knifetype;
 
 DELETE
-FROM steelknifetype;
+FROM application;
 
-INSERT INTO steel (steelid,steelname, manufacturer, steeldescription, rockwellhardness, sharpening, edgeretention, stainless)
+-- DELETE
+-- FROM steelknifetype;
+
+INSERT INTO steel (steelid, steelname, manufacturer, steeldescription, rockwellhardness, sharpening, edgeretention, stainless)
     VALUES (0, 'M390', 'Bohler-Uddeholm' , 'Popular', '60-62', '8', '10', '8'),
            (1, 'K390', 'Bohler-Uddeholm' , 'Super D2 type steel', '62-64', '7', '10', '2');
 
@@ -16,8 +19,12 @@ INSERT INTO knifetype (knifetypeid, knifetype)
            (1, 'Pocket Knife'),
            (2, 'Chef Knife');
 
-INSERT INTO steelknifetype (steelid, knifetypeid)
-    VALUES (0, 0),
-           (0, 1);
+-- INSERT INTO steelknifetype (steelid, knifetypeid)
+--     VALUES (0, 0),
+--            (0, 1);
 
+INSERT INTO application (applicationid, application)
+    VALUES (0, 'Plastics'),
+           (1, 'Waffles');
 
+alter sequence hibernate_sequence restart with 15;

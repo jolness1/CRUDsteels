@@ -14,11 +14,10 @@ public class Steels extends Auditable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long steelid;
 
-    @OneToMany(mappedBy = "steel",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
+    @ManyToOne
+    @JoinColumn(name = "applicationid")
     @JsonIgnoreProperties(value = "steel", allowSetters = true)
-    private Set<SteelIndustrial> application = new HashSet<>();
+    private Applications applications;
 
     @ManyToOne
     @JoinColumn(name = "knifetype")
@@ -48,9 +47,9 @@ public class Steels extends Auditable{
     public Steels() {
     }
 
-    public Steels(long steelid, Set<SteelIndustrial> application, KnifeType knifetype, String steelname, String manufacturer, String steeldescription, String rockwellhardness, String sharpening, String edgeretention, String stainless) {
+    public Steels(long steelid, Applications applications, KnifeType knifetype, String steelname, String manufacturer, String steeldescription, String rockwellhardness, String sharpening, String edgeretention, String stainless) {
         this.steelid = steelid;
-        this.application = application;
+        this.applications = applications;
         this.knifetype = knifetype;
         this.steelname = steelname;
         this.manufacturer = manufacturer;
@@ -69,12 +68,12 @@ public class Steels extends Auditable{
         this.steelid = steelid;
     }
 
-    public Set<SteelIndustrial> getApplication() {
-        return application;
+    public Applications getApplications() {
+        return applications;
     }
 
-    public void setApplication(Set<SteelIndustrial> application) {
-        this.application = application;
+    public void setApplications(Applications applications) {
+        this.applications = applications;
     }
 
     public KnifeType getKnifetype() {
@@ -142,18 +141,8 @@ public class Steels extends Auditable{
     }
 
     @Override
-    public String toString() {
-        return "Steels{" +
-                "steelid=" + steelid +
-                ", application=" + application +
-                ", knifetype=" + knifetype +
-                ", steelname='" + steelname + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", steeldescription='" + steeldescription + '\'' +
-                ", rockwellhardness='" + rockwellhardness + '\'' +
-                ", sharpening='" + sharpening + '\'' +
-                ", edgeretention='" + edgeretention + '\'' +
-                ", stainless='" + stainless + '\'' +
-                '}';
+    public int hashCode()
+    {
+        return 42;
     }
 }

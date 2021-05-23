@@ -23,7 +23,7 @@ public class Steels extends Auditable{
     @ManyToOne
     @JoinColumn(name = "knifetype")
     @JsonIgnoreProperties("steel")
-    private KnifeType knifeType;
+    private KnifeType knifetype;
 
     // eg 420HC, s30v, m390
     private String steelname;
@@ -45,21 +45,13 @@ public class Steels extends Auditable{
     // 1 - 10 Scale
     private String stainless;
 
-
-
-
-
     public Steels() {
     }
 
-    public Steels(String steelname,
-                  String manufacturer,
-                  String steeldescription,
-                  String rockwellhardness,
-                  String sharpening,
-                  String edgeretention,
-                  String stainless)
-    {
+    public Steels(long steelid, Set<SteelIndustrial> application, KnifeType knifetype, String steelname, String manufacturer, String steeldescription, String rockwellhardness, String sharpening, String edgeretention, String stainless) {
+        this.steelid = steelid;
+        this.application = application;
+        this.knifetype = knifetype;
         this.steelname = steelname;
         this.manufacturer = manufacturer;
         this.steeldescription = steeldescription;
@@ -75,6 +67,22 @@ public class Steels extends Auditable{
 
     public void setSteelid(long steelid) {
         this.steelid = steelid;
+    }
+
+    public Set<SteelIndustrial> getApplication() {
+        return application;
+    }
+
+    public void setApplication(Set<SteelIndustrial> application) {
+        this.application = application;
+    }
+
+    public KnifeType getKnifetype() {
+        return knifetype;
+    }
+
+    public void setKnifetype(KnifeType knifetype) {
+        this.knifetype = knifetype;
     }
 
     public String getSteelname() {
@@ -137,6 +145,8 @@ public class Steels extends Auditable{
     public String toString() {
         return "Steels{" +
                 "steelid=" + steelid +
+                ", application=" + application +
+                ", knifetype=" + knifetype +
                 ", steelname='" + steelname + '\'' +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", steeldescription='" + steeldescription + '\'' +

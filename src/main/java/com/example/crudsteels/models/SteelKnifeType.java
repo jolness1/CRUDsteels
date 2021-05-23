@@ -18,14 +18,14 @@ public class SteelKnifeType extends Auditable implements Serializable {
     @ManyToOne
     @JoinColumn(name = "knifetypeid")
     @JsonIgnoreProperties("steelknifetype")
-    private KnifeType knifeType;
+    private KnifeType knifetype;
 
     public SteelKnifeType() {
     }
 
-    public SteelKnifeType(Steels steels, KnifeType knifeType) {
+    public SteelKnifeType(Steels steels, KnifeType knifetype) {
         this.steels = steels;
-        this.knifeType = knifeType;
+        this.knifetype = knifetype;
     }
 
     public Steels getSteels() {
@@ -36,12 +36,12 @@ public class SteelKnifeType extends Auditable implements Serializable {
         this.steels = steels;
     }
 
-    public KnifeType getKnifeType() {
-        return knifeType;
+    public KnifeType getKnifetype() {
+        return knifetype;
     }
 
-    public void setKnifeType(KnifeType knifeType) {
-        this.knifeType = knifeType;
+    public void setKnifetype(KnifeType knifeType) {
+        this.knifetype = knifeType;
     }
 
     @Override
@@ -56,6 +56,6 @@ public class SteelKnifeType extends Auditable implements Serializable {
         }
         SteelKnifeType that = (SteelKnifeType) obj;
         return ((steels == null) ? 0 : steels.getSteelid()) == ((that.steels == null) ? 0 : that.steels.getSteelid()) &&
-                ((knifeType == null) ? 0 : knifeType.getKnifetypeid()) == ((that.knifeType == null) ? 0 : that.knifeType.getKnifetypeid());
+                ((knifetype == null) ? 0 : knifetype.getKnifetypeid()) == ((that.knifetype == null) ? 0 : that.knifetype.getKnifetypeid());
     }
 }

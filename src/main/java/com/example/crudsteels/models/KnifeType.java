@@ -17,20 +17,20 @@ public class KnifeType extends Auditable
 
     // eg Kitchen Knife, Survival Knife, Axe/Machete, Pocket Knife
     // One to many relation to Steels
-    @OneToMany(mappedBy = "knifeType", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnoreProperties(value = "knifeType", allowSetters = true)
+    @OneToMany(mappedBy = "knifetype", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties(value = "knifetype", allowSetters = true)
     private List<SteelKnifeType> steelknifetype = new ArrayList<>();
 
 
-    private String knifeType;
+    private String knifetype;
 
     public KnifeType() {
     }
 
-    public KnifeType(long knifetypeid, List<SteelKnifeType> steelknifetype, String knifeType) {
+    public KnifeType(long knifetypeid, List<SteelKnifeType> steelknifetype, String knifetype) {
         this.knifetypeid = knifetypeid;
         this.steelknifetype = steelknifetype;
-        this.knifeType = knifeType;
+        this.knifetype = knifetype;
     }
 
     public long getKnifetypeid() {
@@ -49,11 +49,11 @@ public class KnifeType extends Auditable
         this.steelknifetype = steelknifetype;
     }
 
-    public String getKnifeType() {
-        return knifeType;
+    public String getKnifetype() {
+        return knifetype;
     }
 
-    public void setKnifeType(String knifeType) {
-        this.knifeType = knifeType;
+    public void setKnifetype(String knifeType) {
+        this.knifetype = knifeType;
     }
 }

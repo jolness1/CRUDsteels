@@ -15,13 +15,13 @@ public class Steels extends Auditable{
     private long steelid;
 
     @ManyToOne
-    @JoinColumn(name = "applicationid")
+    @JoinColumn(name = "applicationid", nullable = false)
     @JsonIgnoreProperties(value = "steel", allowSetters = true)
     private Applications applications;
 
     @ManyToOne
-    @JoinColumn(name = "knifetype")
-    @JsonIgnoreProperties("steel")
+    @JoinColumn(name = "knifetypeid", nullable = false)
+    @JsonIgnoreProperties(value = "steel", allowSetters = true)
     private KnifeType knifetype;
 
     // eg 420HC, s30v, m390

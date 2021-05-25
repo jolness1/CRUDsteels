@@ -3,8 +3,6 @@ package com.example.crudsteels.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "steel")
@@ -13,6 +11,14 @@ public class Steels extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long steelid;
+
+    // eg 420HC, s30v, m390
+    private String steelname;
+
+    // Crucible, Carpenter, Böhler-Uddeholm
+    private String manufacturer;
+
+    private String steeldescription;
 
     @ManyToOne
     @JoinColumn(name = "applicationid", nullable = false)
@@ -23,14 +29,6 @@ public class Steels extends Auditable{
     @JoinColumn(name = "knifetypeid", nullable = false)
     @JsonIgnoreProperties(value = "steel", allowSetters = true)
     private KnifeType knifetype;
-
-    // eg 420HC, s30v, m390
-    private String steelname;
-
-    // Crucible, Carpenter, Böhler-Uddeholm
-    private String manufacturer;
-
-    private String steeldescription;
 
     // Hardness range in HRC
     private String rockwellhardness;
@@ -68,16 +66,16 @@ public class Steels extends Auditable{
         this.steelid = steelid;
     }
 
-    public Applications getApplications() {
-        return applications;
+    public String getApplications() {
+        return applications.getApplication();
     }
 
     public void setApplications(Applications applications) {
         this.applications = applications;
     }
 
-    public KnifeType getKnifetype() {
-        return knifetype;
+    public String getKnifetype() {
+        return knifetype.getKnifetype();
     }
 
     public void setKnifetype(KnifeType knifetype) {
@@ -145,4 +143,6 @@ public class Steels extends Auditable{
     {
         return 42;
     }
+
+
 }

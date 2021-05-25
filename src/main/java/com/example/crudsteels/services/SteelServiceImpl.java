@@ -1,6 +1,7 @@
 package com.example.crudsteels.services;
 
 
+import com.example.crudsteels.exceptions.ResourceNotFoundException;
 import com.example.crudsteels.models.Steels;
 import com.example.crudsteels.repositories.ApplicationsRepository;
 import com.example.crudsteels.repositories.KnifeTypeRepository;
@@ -33,4 +34,11 @@ public class SteelServiceImpl implements SteelService {
                 .forEachRemaining(list::add);
         return list;
     }
+
+//    @Override
+//    public List<Steels> findSteelById(long id) {
+//        Steels currentSteel = steelsRepos.findById(id)
+//                .orElseThrow(() -> new ResourceNotFoundException("Steel with ID " + id + "not found!"));
+//        return currentSteel;
+//    }
 }

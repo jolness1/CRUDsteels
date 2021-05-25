@@ -7,8 +7,6 @@ FROM knifetype;
 DELETE
 FROM application;
 
--- DELETE
--- FROM steelknifetype;
 
 INSERT INTO knifetype (knifetypeid, knifetype)
 VALUES (0, 'Axe'),

@@ -7,4 +7,6 @@ import java.util.List;
 public interface SteelService {
 
     List<Steels> findAll();
+
+//    List<Steels> findSteelById(long id);
 }

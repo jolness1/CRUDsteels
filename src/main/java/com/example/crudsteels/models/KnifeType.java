@@ -17,20 +17,20 @@ public class KnifeType extends Auditable
 
     // eg Kitchen Knife, Survival Knife, Axe/Machete, Pocket Knife
     // One to many relation to Steels
-    @OneToMany(mappedBy = "knifeType", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnoreProperties(value = "knifeType", allowSetters = true)
-    private List<SteelKnifeType> steelknifetype = new ArrayList<>();
+    @OneToMany(mappedBy = "knifetype", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties(value = "knifetype", allowSetters = true)
+    private List<Steels> steel = new ArrayList<>();
 
 
-    private String knifeType;
+    private String knifetype;
 
     public KnifeType() {
     }
 
-    public KnifeType(long knifetypeid, List<SteelKnifeType> steelknifetype, String knifeType) {
+    public KnifeType(long knifetypeid, List<Steels> steel, String knifetype) {
         this.knifetypeid = knifetypeid;
-        this.steelknifetype = steelknifetype;
-        this.knifeType = knifeType;
+        this.steel = steel;
+        this.knifetype = knifetype;
     }
 
     public long getKnifetypeid() {
@@ -41,19 +41,19 @@ public class KnifeType extends Auditable
         this.knifetypeid = knifetypeid;
     }
 
-    public List<SteelKnifeType> getSteelknifetype() {
-        return steelknifetype;
+    public List<Steels> getSteel() {
+        return steel;
     }
 
-    public void setSteelknifetype(List<SteelKnifeType> steelknifetype) {
-        this.steelknifetype = steelknifetype;
+    public void setSteel(List<Steels> steel) {
+        this.steel = steel;
     }
 
-    public String getKnifeType() {
-        return knifeType;
+    public String getKnifetype() {
+        return knifetype;
     }
 
-    public void setKnifeType(String knifeType) {
-        this.knifeType = knifeType;
+    public void setKnifetype(String knifeType) {
+        this.knifetype = knifeType;
     }
 }

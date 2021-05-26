@@ -14,11 +14,11 @@ public class Applications extends Auditable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long applicationid;
 
-    @OneToMany(mappedBy = "application",
+    @OneToMany(mappedBy = "applications",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
-    @JsonIgnoreProperties(value = "application", allowSetters = true)
-    private Set<SteelIndustrial> steel = new HashSet<>();
+    @JsonIgnoreProperties(value = "applications", allowSetters = true)
+    private Set<Steels> steel = new HashSet<>();
 
 
 
@@ -29,8 +29,9 @@ public class Applications extends Auditable {
     public Applications() {
     }
 
-    public Applications(long applicationid, String application) {
+    public Applications(long applicationid, Set<Steels> steel, String application) {
         this.applicationid = applicationid;
+        this.steel = steel;
         this.application = application;
     }
 
@@ -42,6 +43,14 @@ public class Applications extends Auditable {
         this.applicationid = applicationid;
     }
 
+    public Set<Steels> getSteel() {
+        return steel;
+    }
+
+    public void setSteel(Set<Steels> steel) {
+        this.steel = steel;
+    }
+
     public String getApplication() {
         return application;
     }
@@ -49,4 +58,6 @@ public class Applications extends Auditable {
     public void setApplication(String application) {
         this.application = application;
     }
+
+
 }

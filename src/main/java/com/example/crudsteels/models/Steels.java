@@ -3,8 +3,6 @@ package com.example.crudsteels.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "steel")
@@ -14,17 +12,6 @@ public class Steels extends Auditable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long steelid;
 
-    @OneToMany(mappedBy = "steel",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    @JsonIgnoreProperties(value = "steel", allowSetters = true)
-    private Set<SteelIndustrial> application = new HashSet<>();
-
-    @ManyToOne
-    @JoinColumn(name = "knifetype")
-    @JsonIgnoreProperties("steel")
-    private KnifeType knifeType;
-
     // eg 420HC, s30v, m390
     private String steelname;
 
@@ -32,6 +19,16 @@ public class Steels extends Auditable{
     private String manufacturer;
 
     private String steeldescription;
+
+    @ManyToOne
+    @JoinColumn(name = "applicationid", nullable = false)
+    @JsonIgnoreProperties(value = "steel", allowSetters = true)
+    private Applications applications;
+
+    @ManyToOne
+    @JoinColumn(name = "knifetypeid", nullable = false)
+    @JsonIgnoreProperties(value = "steel", allowSetters = true)
+    private KnifeType knifetype;
 
     // Hardness range in HRC
     private String rockwellhardness;
@@ -45,21 +42,13 @@ public class Steels extends Auditable{
     // 1 - 10 Scale
     private String stainless;
 
-
-
-
-
     public Steels() {
     }
 
-    public Steels(String steelname,
-                  String manufacturer,
-                  String steeldescription,
-                  String rockwellhardness,
-                  String sharpening,
-                  String edgeretention,
-                  String stainless)
-    {
+    public Steels(long steelid, Applications applications, KnifeType knifetype, String steelname, String manufacturer, String steeldescription, String rockwellhardness, String sharpening, String edgeretention, String stainless) {
+        this.steelid = steelid;
+        this.applications = applications;
+        this.knifetype = knifetype;
         this.steelname = steelname;
         this.manufacturer = manufacturer;
         this.steeldescription = steeldescription;
@@ -75,6 +64,22 @@ public class Steels extends Auditable{
 
     public void setSteelid(long steelid) {
         this.steelid = steelid;
+    }
+
+    public String getApplications() {
+        return applications.getApplication();
+    }
+
+    public void setApplications(Applications applications) {
+        this.applications = applications;
+    }
+
+    public String getKnifetype() {
+        return knifetype.getKnifetype();
+    }
+
+    public void setKnifetype(KnifeType knifetype) {
+        this.knifetype = knifetype;
     }
 
     public String getSteelname() {
@@ -134,16 +139,10 @@ public class Steels extends Auditable{
     }
 
     @Override
-    public String toString() {
-        return "Steels{" +
-                "steelid=" + steelid +
-                ", steelname='" + steelname + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", steeldescription='" + steeldescription + '\'' +
-                ", rockwellhardness='" + rockwellhardness + '\'' +
-                ", sharpening='" + sharpening + '\'' +
-                ", edgeretention='" + edgeretention + '\'' +
-                ", stainless='" + stainless + '\'' +
-                '}';
+    public int hashCode()
+    {
+        return 42;
     }
+
+
 }

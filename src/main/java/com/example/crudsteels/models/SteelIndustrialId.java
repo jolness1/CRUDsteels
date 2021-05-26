@@ -4,28 +4,34 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
-public class SteelIndustrialId implements Serializable {
+public class SteelIndustrialId implements Serializable
+{
 
     private long steel;
 
     private long application;
 
-    public SteelIndustrialId() {
+    public SteelIndustrialId()
+    {
     }
 
-    public long getSteel() {
+    public long getSteel()
+    {
         return steel;
     }
 
-    public void setSteel(long steel) {
+    public void setSteel(long steel)
+    {
         this.steel = steel;
     }
 
-    public long getApplication() {
+    public long getApplication()
+    {
         return application;
     }
 
-    public void setApplication(long application) {
+    public void setApplication(long application)
+    {
         this.application = application;
     }
 

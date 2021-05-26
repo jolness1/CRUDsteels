@@ -10,8 +10,9 @@ import java.io.Serializable;
 @Table(name = "steelindustrial")
 @IdClass(SteelIndustrialId.class)
 public class SteelIndustrial
-            extends Auditable
-            implements Serializable {
+        extends Auditable
+        implements Serializable
+{
     @Id
     @ManyToOne
     @JoinColumn(name = "steelid")
@@ -24,28 +25,34 @@ public class SteelIndustrial
     @JsonIgnoreProperties(value = "steel", allowSetters = true)
     private Applications application;
 
-    public SteelIndustrial() {
+    public SteelIndustrial()
+    {
     }
 
-    public SteelIndustrial(Steels steel, Applications applications) {
+    public SteelIndustrial(Steels steel, Applications applications)
+    {
         this.steel = steel;
         this.application = applications;
     }
 
 
-    public Steels getSteel() {
+    public Steels getSteel()
+    {
         return steel;
     }
 
-    public void setSteel(Steels steel) {
+    public void setSteel(Steels steel)
+    {
         this.steel = steel;
     }
 
-    public Applications getApplication() {
+    public Applications getApplication()
+    {
         return application;
     }
 
-    public void setApplication(Applications applications) {
+    public void setApplication(Applications applications)
+    {
         this.application = applications;
     }
 

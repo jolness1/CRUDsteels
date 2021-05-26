@@ -6,7 +6,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "steel")
-public class Steels extends Auditable{
+public class Steels extends Auditable
+{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,10 +43,12 @@ public class Steels extends Auditable{
     // 1 - 10 Scale
     private String stainless;
 
-    public Steels() {
+    public Steels()
+    {
     }
 
-    public Steels(long steelid, Applications applications, KnifeType knifetype, String steelname, String manufacturer, String steeldescription, String rockwellhardness, String sharpening, String edgeretention, String stainless) {
+    public Steels(long steelid, Applications applications, KnifeType knifetype, String steelname, String manufacturer, String steeldescription, String rockwellhardness, String sharpening, String edgeretention, String stainless)
+    {
         this.steelid = steelid;
         this.applications = applications;
         this.knifetype = knifetype;
@@ -58,83 +61,103 @@ public class Steels extends Auditable{
         this.stainless = stainless;
     }
 
-    public long getSteelid() {
+    public long getSteelid()
+    {
         return steelid;
     }
 
-    public void setSteelid(long steelid) {
+    public void setSteelid(long steelid)
+    {
         this.steelid = steelid;
     }
 
-    public String getApplications() {
+    public String getApplications()
+    {
         return applications.getApplication();
     }
 
-    public void setApplications(Applications applications) {
+    public void setApplications(Applications applications)
+    {
         this.applications = applications;
     }
 
-    public String getKnifetype() {
+    public String getKnifetype()
+    {
         return knifetype.getKnifetype();
     }
 
-    public void setKnifetype(KnifeType knifetype) {
+    public void setKnifetype(KnifeType knifetype)
+    {
         this.knifetype = knifetype;
     }
 
-    public String getSteelname() {
+    public String getSteelname()
+    {
         return steelname;
     }
 
-    public void setSteelname(String steelname) {
+    public void setSteelname(String steelname)
+    {
         this.steelname = steelname;
     }
 
-    public String getManufacturer() {
+    public String getManufacturer()
+    {
         return manufacturer;
     }
 
-    public void setManufacturer(String manufacturer) {
+    public void setManufacturer(String manufacturer)
+    {
         this.manufacturer = manufacturer;
     }
 
-    public String getSteeldescription() {
+    public String getSteeldescription()
+    {
         return steeldescription;
     }
 
-    public void setSteeldescription(String steeldescription) {
+    public void setSteeldescription(String steeldescription)
+    {
         this.steeldescription = steeldescription;
     }
 
-    public String getRockwellhardness() {
+    public String getRockwellhardness()
+    {
         return rockwellhardness;
     }
 
-    public void setRockwellhardness(String rockwellhardness) {
+    public void setRockwellhardness(String rockwellhardness)
+    {
         this.rockwellhardness = rockwellhardness;
     }
 
-    public String getSharpening() {
+    public String getSharpening()
+    {
         return sharpening;
     }
 
-    public void setSharpening(String sharpening) {
+    public void setSharpening(String sharpening)
+    {
         this.sharpening = sharpening;
     }
 
-    public String getEdgeretention() {
+    public String getEdgeretention()
+    {
         return edgeretention;
     }
 
-    public void setEdgeretention(String edgeretention) {
+    public void setEdgeretention(String edgeretention)
+    {
         this.edgeretention = edgeretention;
     }
 
-    public String getStainless() {
+    public String getStainless()
+    {
         return stainless;
     }
 
-    public void setStainless(String stainless) {
+    public void setStainless(String stainless)
+    {
         this.stainless = stainless;
     }
 

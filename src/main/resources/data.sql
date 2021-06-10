@@ -2,6 +2,9 @@ DELETE
 FROM steel;
 
 DELETE
+FROM user;
+
+DELETE
 FROM knifetype;
 
 DELETE
@@ -12,6 +15,9 @@ INSERT INTO knifetype (knifetypeid, knifetype)
 VALUES (0, 'Axe'),
        (1, 'Pocket Knife'),
        (2, 'Chef Knife');
+
+INSERT INTO user (userid, username, password, useremail)
+VALUES (0, 'admin', 'admin', 'admin@admin.admin');
 
 INSERT INTO application (applicationid, application)
 VALUES (0, 'Plastics'),

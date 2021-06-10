@@ -54,6 +54,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         endpoints.tokenStore(tokenStore).authenticationManager(authenticationManager);
 
         // remapping for simplicity on Front End
-        endpoints.pathMapping("/oauth/token", "/login")
+        endpoints.pathMapping("/oauth/token", "/login");
     }
 }

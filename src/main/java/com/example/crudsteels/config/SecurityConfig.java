@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     {
         return super.authenticationManagerBean();
     }
-    
+
     @Autowired
     private UserDetailsService securityUserService;
 

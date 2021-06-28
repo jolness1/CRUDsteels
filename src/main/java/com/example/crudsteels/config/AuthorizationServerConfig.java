@@ -2,6 +2,7 @@ package com.example.crudsteels.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,7 +17,9 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter
 {
     //client id + client secret
+    @Value("${OAUTHCLIENTID:}")
     private static String CLIENT_ID = System.getenv("OAUTHCLIENTID");
+    @Value("${OAUTHCLIENTSECRET:}")
     private static String CLIENT_SECRET = System.getenv("OAUTHCLIENTSECRET");
 
     private static String GRANT_TYPE_PASSWORD = "password";

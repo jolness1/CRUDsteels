@@ -33,7 +33,7 @@ public class User extends Auditable
     @Email
     private String useremail;
 
-    private String comments;
+//    private String comments;
 
     @OneToMany(mappedBy = "user",
     cascade = CascadeType.ALL,
@@ -51,7 +51,7 @@ public class User extends Auditable
         setUsername(username);
         setPassword(password);
         this.useremail = useremail;
-        this.comments = comments;
+//        this.comments = comments;
     }
 
     public long getUserid()
@@ -100,15 +100,15 @@ public class User extends Auditable
         this.useremail = useremail;
     }
 
-    public String getComments()
-    {
-        return comments;
-    }
-
-    public void setComments(String comments)
-    {
-        this.comments = comments;
-    }
+//    public String getComments()
+//    {
+//        return comments;
+//    }
+//
+//    public void setComments(String comments)
+//    {
+//        this.comments = comments;
+//    }
 
     public Set<UserRoles> getRoles()
     {

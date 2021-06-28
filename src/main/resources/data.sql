@@ -2,31 +2,41 @@ DELETE
 FROM steel;
 
 DELETE
-FROM user;
+FROM USERS;
 
 DELETE
-FROM knifetype;
+FROM USERROLES;
 
 DELETE
-FROM application;
+FROM ROLES;
+
+DELETE
+FROM KNIFETYPE;
+
+DELETE
+FROM APPLICATION;
 
 
-INSERT INTO knifetype (knifetypeid, knifetype)
-VALUES (0, 'Axe'),
-       (1, 'Pocket Knife'),
-       (2, 'Chef Knife');
+INSERT INTO KNIFETYPE (KNIFETYPEID, KNIFETYPE, CREATEDBY, CREATEDDATE, LASTMODIFIEDBY, LASTMODIFIEDDATE)
+VALUES (0, 'Axe', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
+       (1, 'Pocket Knife', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
+       (2, 'Chef Knife', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP);
 
-INSERT INTO user (userid, username, password, useremail)
-VALUES (0, 'admin', 'admin', 'admin@admin.admin');
+INSERT INTO USERS (USERID, USERNAME, PASSWORD, USEREMAIL, CREATEDBY, CREATEDDATE, LASTMODIFIEDBY, LASTMODIFIEDDATE)
+VALUES (0, 'admin', 'admin', 'admin@admin.admin', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP);
 
-INSERT INTO application (applicationid, application)
-VALUES (0, 'Plastics'),
-       (1, 'Waffles');
+INSERT INTO ROLES(ROLEID, NAME, CREATEDBY, CREATEDDATE, LASTMODIFIEDBY, LASTMODIFIEDDATE)
+VALUES (1, 'ADMIN', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
+       (2, 'USER', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP);
 
-INSERT INTO steel (steelid, applicationid, knifetypeid, steelname, manufacturer, steeldescription, rockwellhardness,
-                   sharpening, edgeretention, stainless)
-VALUES (0, 0, 0, 'M390', 'Bohler-Uddeholm', 'Popular', '60-62', '8', '10', '8'),
-       (1, 1, 1, 'K390', 'Bohler-Uddeholm', 'Super D2 type steel', '62-64', '7', '10', '2');
+INSERT INTO APPLICATION (APPLICATIONID, APPLICATION, CREATEDBY, CREATEDDATE, LASTMODIFIEDBY, LASTMODIFIEDDATE)
+VALUES (0, 'Plastics', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
+       (1, 'Waffles', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP);
+
+INSERT INTO STEEL (STEELID, APPLICATIONID, KNIFETYPEID, STEELNAME, MANUFACTURER, STEELDESCRIPTION, ROCKWELLHARDNESS,
+                   SHARPENING, EDGERETENTION, STAINLESS, CREATEDBY, CREATEDDATE, LASTMODIFIEDBY, LASTMODIFIEDDATE)
+VALUES (0, 0, 0, 'M390', 'Bohler-Uddeholm', 'Popular', '60-62', '8', '10', '8', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
+       (1, 1, 1, 'K390', 'Bohler-Uddeholm', 'Super D2 type steel', '62-64', '7', '10', '2', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP);
 
 
 alter sequence hibernate_sequence restart with 15;

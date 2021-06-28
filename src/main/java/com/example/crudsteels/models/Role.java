@@ -9,7 +9,7 @@ import java.util.Locale;
 import java.util.Set;
 
 @Entity
-@Table(name = "role")
+@Table(name = "roles")
 public class Role extends Auditable
 {
     @Id

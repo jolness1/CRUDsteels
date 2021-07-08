@@ -100,15 +100,6 @@ public class User extends Auditable
         this.useremail = useremail;
     }
 
-//    public String getComments()
-//    {
-//        return comments;
-//    }
-//
-//    public void setComments(String comments)
-//    {
-//        this.comments = comments;
-//    }
 
     public Set<UserRoles> getRoles()
     {

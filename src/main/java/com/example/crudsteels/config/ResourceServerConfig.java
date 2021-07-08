@@ -26,8 +26,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
     public void configure(HttpSecurity http) throws Exception
     {
         http.authorizeRequests()
-                .antMatchers("/",
-                        "/h2-console/**",
+                .antMatchers("/h2-console/**",
                         "/swagger-resources/**",
                         "/swagger-resource/**",
                         "/swagger-ui.html",
@@ -35,7 +34,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
                         "/webjars/**",
                         "/login")
                 .permitAll()
-                .antMatchers("/roles/**", "/products/**")
+                .antMatchers(HttpMethod.GET,"/roles/**", "/steels/**")
                 .hasAnyRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/users/**", "/oauth/revoke-token", "/logout")
                 .authenticated()

@@ -127,11 +127,12 @@ public class User extends Auditable
 
         for (UserRoles r : this.roles)
         {
-            String myRole = "ROLE" + r.getRole()
+            String myRole = "ROLE_" + r.getRole()
                     .getName()
                     .toUpperCase();
             rtnList.add(new SimpleGrantedAuthority(myRole));
         }
+
         return rtnList;
     }
 }

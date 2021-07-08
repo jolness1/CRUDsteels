@@ -1,6 +1,9 @@
 package com.example.crudsteels.services;
 
+import com.example.crudsteels.exceptions.ResourceNotFoundException;
+import com.example.crudsteels.models.Role;
 import com.example.crudsteels.models.User;
+import com.example.crudsteels.models.UserRoles;
 import com.example.crudsteels.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,5 +28,11 @@ public class UserServiceImpl implements UserService
                 .iterator()
                 .forEachRemaining(list::add);
         return list;
+    }
+
+    @Override
+    public List<User> findByNameContaining(String username)
+    {
+        return null;
     }
 }

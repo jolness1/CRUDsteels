@@ -1,21 +1,21 @@
 package com.example.crudsteels.services;
 
 
-import com.example.crudsteels.exceptions.ResourceNotFoundException;
 import com.example.crudsteels.models.Steels;
 import com.example.crudsteels.repositories.ApplicationsRepository;
 import com.example.crudsteels.repositories.KnifeTypeRepository;
 import com.example.crudsteels.repositories.SteelsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
 @Service("steelService")
-public class SteelServiceImpl implements SteelService {
+public class SteelServiceImpl implements SteelService
+{
 
     @Autowired
     SteelsRepository steelsRepos;
@@ -27,7 +27,8 @@ public class SteelServiceImpl implements SteelService {
     ApplicationsRepository applicationsRepos;
 
     @Override
-    public List<Steels> findAll(){
+    public List<Steels> findAll()
+    {
         List<Steels> list = new ArrayList<>();
         steelsRepos.findAll()
                 .iterator()

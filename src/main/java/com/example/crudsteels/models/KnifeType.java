@@ -24,36 +24,44 @@ public class KnifeType extends Auditable
 
     private String knifetype;
 
-    public KnifeType() {
+    public KnifeType()
+    {
     }
 
-    public KnifeType(long knifetypeid, List<Steels> steel, String knifetype) {
+    public KnifeType(long knifetypeid, List<Steels> steel, String knifetype)
+    {
         this.knifetypeid = knifetypeid;
         this.steel = steel;
         this.knifetype = knifetype;
     }
 
-    public long getKnifetypeid() {
+    public long getKnifetypeid()
+    {
         return knifetypeid;
     }
 
-    public void setKnifetypeid(long knifetypeid) {
+    public void setKnifetypeid(long knifetypeid)
+    {
         this.knifetypeid = knifetypeid;
     }
 
-    public List<Steels> getSteel() {
+    public List<Steels> getSteel()
+    {
         return steel;
     }
 
-    public void setSteel(List<Steels> steel) {
+    public void setSteel(List<Steels> steel)
+    {
         this.steel = steel;
     }
 
-    public String getKnifetype() {
+    public String getKnifetype()
+    {
         return knifetype;
     }
 
-    public void setKnifetype(String knifeType) {
+    public void setKnifetype(String knifeType)
+    {
         this.knifetype = knifeType;
     }
 }

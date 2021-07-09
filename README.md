@@ -15,7 +15,7 @@ Endpoints:
     
 - /steels
     - @Get /steels - Lists all steels
-    - @Get /steels/{steelid} - Lists steel at given ID #
+    - @Get /steel/{steelid} - Lists steel at given ID #
     - @Get /name/{steelname} - lists steel with given name
     - @Get /name/like/{steelname} - 
         search for steel containing characters (ie "390" would return M390 & K390)

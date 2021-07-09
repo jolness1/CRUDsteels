@@ -36,6 +36,42 @@ public class SteelServiceImpl implements SteelService
         return list;
     }
 
+    @Override
+    public Steels findSteelById(Long steelid)
+    {
+        return null;
+    }
+
+    @Override
+    public Steels findByName(String steelName)
+    {
+        return null;
+    }
+
+    @Override
+    public Steels findByNameContaining(String steelName)
+    {
+        return null;
+    }
+
+    @Override
+    public Steels save(Steels newsteel)
+    {
+        return null;
+    }
+
+    @Override
+    public void update(Steels updateSteel, long steelid)
+    {
+
+    }
+
+    @Override
+    public void delete(long steelid)
+    {
+
+    }
+
 //    @Override
 //    public List<Steels> findSteelById(long id) {
 //        Steels currentSteel = steelsRepos.findById(id)

@@ -21,5 +21,7 @@ public interface SteelService
 
     void delete(long steelid);
 
+    Steels findByManufacturer(String manufacturer);
+
 //    List<Steels> findSteelById(long id);
 }

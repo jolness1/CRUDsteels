@@ -72,6 +72,12 @@ public class SteelServiceImpl implements SteelService
 
     }
 
+    @Override
+    public Steels findByManufacturer(String manufacturer)
+    {
+        return null;
+    }
+
 //    @Override
 //    public List<Steels> findSteelById(long id) {
 //        Steels currentSteel = steelsRepos.findById(id)

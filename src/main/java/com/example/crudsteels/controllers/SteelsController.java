@@ -25,12 +25,17 @@ public class SteelsController
 
     // HTTP GET
 
+//    - @Get /steels - Lists all steels
+
     @GetMapping(value = "/steels", produces = {"application/json"})
     public ResponseEntity<?> listAllSteels(HttpServletRequest request)
     {
         List<Steels> mySteels = steelService.findAll();
         return new ResponseEntity<>(mySteels, HttpStatus.OK);
     }
+
+//     - @Get /steel/{steelid} - Lists steel at given ID #
+
 
     @GetMapping(value = "/steel/{steelid}", produces = {"application/json"})
     public ResponseEntity<?> getSteelById (
@@ -40,6 +45,8 @@ public class SteelsController
         return new ResponseEntity<>(s, HttpStatus.OK);
     }
 
+//    - @Get /name/{steelname} - lists steel with given name
+
     @GetMapping(value = "/name/{steelName}", produces = {"application/json"})
     public ResponseEntity<?> getSteelByName (
             @PathVariable String steelName)
@@ -47,6 +54,8 @@ public class SteelsController
         Steels s = steelService.findByName(steelName);
         return new ResponseEntity<>(s, HttpStatus.OK);
     }
+
+//    - @Get /name/like/{steelname} search for steel containing characters (ie "390" would return M390 & K390)
 
     @GetMapping(value = "/name/like/{steelName}", produces = {"application/json"})
     public ResponseEntity<?> getSteelLikeName (
@@ -56,7 +65,19 @@ public class SteelsController
         return new ResponseEntity<>(s, HttpStatus.OK);
     }
 
+//    - @Get /manufacturer/{mfrname} - list all by Manufacturer
+
+    @GetMapping(value = "/manufacturer/{manufacturer}", produces = {"application/json"})
+    public ResponseEntity<?> getSteelByManufacturer (
+            @PathVariable String manufacturer)
+    {
+        Steels s = steelService.findByManufacturer(manufacturer);
+        return new ResponseEntity<>(s, HttpStatus.OK);
+    }
+
     // HTTP POST
+
+//    - @Post /steel - add's new steel to database
 
     @PostMapping(value = "/steel", consumes = {"application/json"})
     public ResponseEntity<?> addNewSteel(

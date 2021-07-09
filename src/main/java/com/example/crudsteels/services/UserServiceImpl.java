@@ -31,8 +31,26 @@ public class UserServiceImpl implements UserService
     }
 
     @Override
-    public List<User> findByNameContaining(String username)
+    public User findByName(String name)
     {
         return null;
+    }
+
+    @Override
+    public User save(User newuser)
+    {
+        return null;
+    }
+
+    @Override
+    public void update(User updateUser, long id)
+    {
+
+    }
+
+    @Override
+    public void delete(long id)
+    {
+
     }
 }

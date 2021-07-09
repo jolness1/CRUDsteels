@@ -8,7 +8,12 @@ public interface UserService
 {
     List<User> findAll();
 
-    List<User> findByNameContaining(String username);
+    User findByName(String name);
 
-//    User save(User user);
+    User save(User newuser);
+
+    void update(User updateUser, long id);
+
+    void delete(long id);
+
 }

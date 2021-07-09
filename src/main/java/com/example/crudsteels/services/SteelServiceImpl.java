@@ -78,10 +78,4 @@ public class SteelServiceImpl implements SteelService
         return null;
     }
 
-//    @Override
-//    public List<Steels> findSteelById(long id) {
-//        Steels currentSteel = steelsRepos.findById(id)
-//                .orElseThrow(() -> new ResourceNotFoundException("Steel with ID " + id + "not found!"));
-//        return currentSteel;
-//    }
 }

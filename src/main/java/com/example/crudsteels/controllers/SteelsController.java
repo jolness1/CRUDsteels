@@ -3,7 +3,6 @@ package com.example.crudsteels.controllers;
 import com.example.crudsteels.models.Steels;
 import com.example.crudsteels.services.SteelService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +26,7 @@ public class SteelsController
 
 //    - @Get /steels - Lists all steels
 
-    @GetMapping(value = "/steels", produces = {"application/json"})
+    @GetMapping(value = "/steels", produces = "application/json")
     public ResponseEntity<?> listAllSteels(HttpServletRequest request)
     {
         List<Steels> mySteels = steelService.findAll();
@@ -37,8 +36,8 @@ public class SteelsController
 //     - @Get /steel/{steelid} - Lists steel at given ID #
 
 
-    @GetMapping(value = "/steel/{steelid}", produces = {"application/json"})
-    public ResponseEntity<?> getSteelById (
+    @GetMapping(value = "/steel/{steelid}", produces = "application/json")
+    public ResponseEntity<?> getSteelById(
             @PathVariable Long steelid)
     {
         Steels s = steelService.findSteelById(steelid);
@@ -47,8 +46,8 @@ public class SteelsController
 
 //    - @Get /name/{steelname} - lists steel with given name
 
-    @GetMapping(value = "/name/{steelName}", produces = {"application/json"})
-    public ResponseEntity<?> getSteelByName (
+    @GetMapping(value = "/name/{steelName}", produces = "application/json")
+    public ResponseEntity<?> getSteelByName(
             @PathVariable String steelName)
     {
         Steels s = steelService.findByName(steelName);
@@ -57,8 +56,8 @@ public class SteelsController
 
 //    - @Get /name/like/{steelname} search for steel containing characters (ie "390" would return M390 & K390)
 
-    @GetMapping(value = "/name/like/{steelName}", produces = {"application/json"})
-    public ResponseEntity<?> getSteelLikeName (
+    @GetMapping(value = "/name/like/{steelName}", produces = "application/json")
+    public ResponseEntity<?> getSteelLikeName(
             @PathVariable String steelName)
     {
         Steels s = steelService.findByNameContaining(steelName);
@@ -67,8 +66,8 @@ public class SteelsController
 
 //    - @Get /manufacturer/{mfrname} - list all by Manufacturer
 
-    @GetMapping(value = "/manufacturer/{manufacturer}", produces = {"application/json"})
-    public ResponseEntity<?> getSteelByManufacturer (
+    @GetMapping(value = "/manufacturer/{manufacturer}", produces = "application/json")
+    public ResponseEntity<?> getSteelByManufacturer(
             @PathVariable String manufacturer)
     {
         Steels s = steelService.findByManufacturer(manufacturer);
@@ -79,11 +78,11 @@ public class SteelsController
 
 //    - @Post /steel - add's new steel to database
 
-    @PostMapping(value = "/steel", consumes = {"application/json"})
+    @PostMapping(value = "/steel", consumes = "application/json")
     public ResponseEntity<?> addNewSteel(
             @Valid
             @RequestBody
-            Steels newsteel) throws URISyntaxException
+                    Steels newsteel) throws URISyntaxException
     {
         newsteel.setSteelid(0);
         newsteel = steelService.save(newsteel);
@@ -108,9 +107,9 @@ public class SteelsController
     public ResponseEntity<?> updateFullSteel(
             @Valid
             @RequestBody
-                Steels updateSteel,
+                    Steels updateSteel,
             @PathVariable
-                long steelid)
+                    long steelid)
     {
         updateSteel.setSteelid(steelid);
         steelService.save(updateSteel);
@@ -123,9 +122,9 @@ public class SteelsController
     @PatchMapping(value = "/steel/{steelid}", consumes = "application/json")
     public ResponseEntity<?> updateSteel(
             @RequestBody
-                Steels updateSteel,
+                    Steels updateSteel,
             @PathVariable
-                long steelid)
+                    long steelid)
     {
         steelService.update(updateSteel, steelid);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -137,7 +136,7 @@ public class SteelsController
     @DeleteMapping(value = "/steel/{steelid}")
     public ResponseEntity<?> deleteSteelById(
             @PathVariable
-                long steelid)
+                    long steelid)
     {
         steelService.delete(steelid);
         return new ResponseEntity<>(HttpStatus.OK);

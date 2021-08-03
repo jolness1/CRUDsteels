@@ -23,6 +23,9 @@ public class UserServiceImpl implements UserService
     @Autowired
     RoleService roleService;
 
+    @Autowired
+    private HelperFunctions helperFunctions;
+
     @Override
     public List<User> findAll()
     {
@@ -31,6 +34,13 @@ public class UserServiceImpl implements UserService
                 .iterator()
                 .forEachRemaining(list::add);
         return list;
+    }
+
+    public User findUserById(long id) throws
+            ResourceNotFoundException
+    {
+        return userrepos.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User id " + id + " not found!"));
     }
 
     @Override
@@ -44,6 +54,7 @@ public class UserServiceImpl implements UserService
         return uu;
     }
 
+    @Transactional
     @Override
     public User save(User user)
     {
@@ -73,16 +84,59 @@ public class UserServiceImpl implements UserService
         return userrepos.save(newUser);
     }
 
+    @Transactional
     @Override
-    public void update(User updateUser, long id)
+    public User update(User user, long id)
     {
+        User currentUser = findUserById(id);
 
+        if (helperFunctions.isAuthorizedToMakeChange(currentUser.getUsername()))
+        {
+            if (user.getUsername() != null)
+            {
+                currentUser.setUsername(user.getUsername().toLowerCase());
+            }
+
+            if (user.getPassword() != null)
+            {
+                currentUser.setPasswordNoEncrypt(user.getPassword());
+            }
+
+            if (user.getUseremail() != null)
+            {
+                currentUser.setUseremail(user.getUseremail().toLowerCase());
+            }
+
+            if (user.getRoles()
+                    .size() > 0)
+            {
+                currentUser.getRoles()
+                        .clear();
+                for (UserRoles ur : user.getRoles())
+                {
+                    Role addRole = roleService.findRoleById(ur.getRole()
+                            .getRoleid());
+
+                    currentUser.getRoles()
+                            .add(new UserRoles(currentUser,
+                                    addRole));
+                }
+            }
+
+            return userrepos.save(currentUser);
+        } else
+        {
+            throw new ResourceNotFoundException("This user is not authorized to make this change!");
+        }
     }
 
+    @Transactional
     @Override
     public void delete(long id)
     {
-
+        userrepos.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User at ID " + id + " not found!"));
+        userrepos.deleteById(id);
     }
 }
 

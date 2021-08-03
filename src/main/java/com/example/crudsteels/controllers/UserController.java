@@ -44,7 +44,6 @@ public class UserController
                 HttpStatus.OK);
     }
 
-
 // @Post /user - add's new user
 
     @PostMapping(value = "/user", consumes = "application/json")
@@ -110,4 +109,6 @@ public class UserController
         userService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
 }

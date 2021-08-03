@@ -9,11 +9,11 @@ public interface SteelService
 
     List<Steels> findAll();
 
-    Steels findSteelById(Long steelid);
+    Steels findSteelById(long steelid);
 
-    Steels findByName(String steelName);
+    Steels findByName(String steelname);
 
-    Steels findByNameContaining(String steelName);
+    Steels findByNameContaining(String steelname);
 
     Steels save(Steels newsteel);
 

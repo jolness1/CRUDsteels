@@ -2,16 +2,19 @@
 Java CRUD app with information about common steels used in manufacturing of plastics, tooling and knives/axes.
 
 Will update readme as features are built out.
-
+ As of 8/2/20
 
 Endpoints: 
 - /users
     - @Get /users - Lists all Users 
+      - Works
     - @Post /user - add's new user
+      - Returns 500
     - @Put /user/{userid} - updates full user (requires all user data points)
     - @Patch /user/{userid} - updates only fields sent
     - @Delete /user/{userid} - delete user at given id
-    - @API /getuserinfo - returns information about currently authenticated user
+    - @Get /getuserinfo - returns information about currently authenticated user
+      -Currently Slightly Broken 
     
 - /steels
     - @Get /steels - Lists all steels

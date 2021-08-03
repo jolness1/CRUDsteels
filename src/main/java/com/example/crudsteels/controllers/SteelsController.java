@@ -38,7 +38,7 @@ public class SteelsController
 
     @GetMapping(value = "/steel/{steelid}", produces = "application/json")
     public ResponseEntity<?> getSteelById(
-            @PathVariable Long steelid)
+            @PathVariable long steelid)
     {
         Steels s = steelService.findSteelById(steelid);
         return new ResponseEntity<>(s, HttpStatus.OK);

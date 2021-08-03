@@ -1,6 +1,7 @@
 package com.example.crudsteels.services;
 
 
+import com.example.crudsteels.exceptions.ResourceNotFoundException;
 import com.example.crudsteels.models.Steels;
 import com.example.crudsteels.repositories.ApplicationsRepository;
 import com.example.crudsteels.repositories.KnifeTypeRepository;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Transactional
 @Service("steelService")
@@ -37,21 +39,27 @@ public class SteelServiceImpl implements SteelService
     }
 
     @Override
-    public Steels findSteelById(Long steelid)
+    public Steels findSteelById(long steelid) throws ResourceNotFoundException
     {
-        return null;
+        return steelsRepos.findById(steelid)
+                .orElseThrow(() -> new ResourceNotFoundException("Steel with id #" + steelid + " not found!"));
     }
 
     @Override
-    public Steels findByName(String steelName)
+    public Steels findByName(String steelname)
     {
-        return null;
+        Steels steels = steelsRepos.findBySteelname(steelname.toLowerCase());
+        if (steels == null)
+        {
+            throw new ResourceNotFoundException("Steel " + steelname + "not found!");
+        }
+        return steels;
     }
 
     @Override
-    public Steels findByNameContaining(String steelName)
+    public Steels findByNameContaining(String steelname)
     {
-        return null;
+        return steelsRepos.findBySteelnameContainingIgnoreCase(steelname.toLowerCase());
     }
 
     @Override
@@ -69,13 +77,19 @@ public class SteelServiceImpl implements SteelService
     @Override
     public void delete(long steelid)
     {
-
+        steelsRepos.findById(steelid)
+                .orElseThrow(() -> new ResourceNotFoundException("Steel with id " + steelid + " not found!"));
     }
 
     @Override
     public Steels findByManufacturer(String manufacturer)
     {
-        return null;
+        Steels steels = steelsRepos.findByManufacturer(manufacturer.toLowerCase());
+        if (steels == null)
+        {
+            throw new ResourceNotFoundException("Manufacturer " + manufacturer + "not found!");
+        }
+        return steels;
     }
 
 }

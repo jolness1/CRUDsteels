@@ -5,7 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface SteelsRepository extends CrudRepository<Steels, Long>
 {
-    Steels findBySteelname(String steelname);
+
+    Steels findBySteelnameIgnoreCase(String toLowerCase);
 
     Steels findBySteelnameContainingIgnoreCase(String toLowerCase);
 

@@ -48,7 +48,7 @@ public class SteelServiceImpl implements SteelService
     @Override
     public Steels findByName(String steelname)
     {
-        Steels steels = steelsRepos.findBySteelname(steelname.toLowerCase());
+        Steels steels = steelsRepos.findBySteelnameIgnoreCase(steelname);
         if (steels == null)
         {
             throw new ResourceNotFoundException("Steel " + steelname + "not found!");

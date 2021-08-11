@@ -46,8 +46,7 @@ Endpoints:
       - Returns 200 and steel at given ID number
 
     - @Get /name/{steelname} - lists steel with given name
-      - Returns 500
-      - Wondering if tied to .toLowerCase in findByName in SteelServiceImpl
+      - Working, returns JSON and 200
         
     - @Get /name/like/{steelname} - FINDALLCONTAINING
         search for steel containing characters (ie "390" would return M390 & K390)
